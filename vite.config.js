@@ -8,5 +8,5 @@ export default defineConfig({
     host:true,
   },
   plugins: [react()],
-  base:'/vite-deploy-demo/'
+  base:'/portfolio_2/'
 })
