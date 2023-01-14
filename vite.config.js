@@ -8,5 +8,5 @@ export default defineConfig({
     host:true,
   },
   plugins: [react()],
-  base:'/portfolio_2/'
+  base:'/portfolio_v2/'
 })
