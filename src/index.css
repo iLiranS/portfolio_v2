@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*,::before,::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+body{
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+
+
+@layer components{
+  .Button{
+    @apply flex items-center relative gap-1 rounded-lg p-2  cursor-pointer
+     duration-200 transition-all shadow-md shadow-gray-800 text-xl 
+      text-dark  border-dark
+      dark:text-light  dark:border-light
+
+      after:w-full after:h-full after:absolute after:top-0 after:left-0 after:scale-x-0 after:rounded-lg
+      hover:after:scale-x-100 after:transition-all after:z-[-1] hover:after:border-2 after:border-dark dark:after:border-light
+     ;
+  }
+  .applyBg1{
+    @apply bg-bg1 ;
+  }
+  .dot{
+    @apply rounded-full w-6 h-6 bg-dark dark:bg-light relative text-light dark:text-dark grid place-items-center cursor-pointer;
+  }
+  .activeDot{
+    @apply text-dark bg-light dark:bg-dark dark:text-light border-[1px] border-dark dark:border-light box-content ;
+  }
+  
+
+.hand{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+  display: none;
+}
+
+/* phone carousel */
+.carouselHolder{
+  perspective: 1000px;
+  width: max-content;
+  position: relative;
+}
+
+.carousel{
+  transform-style: preserve-3d;
+  transform: translateZ(-145px) rotateY(-0);
+
+} 
+.carouselItem:nth-child(1) { transform: rotateY(0deg)   translateZ(170px); }
+.carouselItem:nth-child(2) { transform: rotateY(72deg) translateZ(170px); }
+.carouselItem:nth-child(3) { transform: rotateY(144deg) translateZ(170px); }
+.carouselItem:nth-child(4) { transform: rotateY(216deg) translateZ(170px); }
+.carouselItem:nth-child(5) { transform: rotateY(288deg) translateZ(170px); }
+
+/* weird circle */
+.pauseAnimation{
+  animation-play-state:paused;
+}
+.activeItem{
+  width: 100%;
+  height: 100%;
+}
+/* background of content , couldn't find tailwind elegant soultion */
+.bg1{
+  background-image: url('./images/1.webp');
+}
+.bg2{
+  background-image: url('./images/2.webp');
+}
+.bg3{
+  background-image: url('./images/3.webp');
+}
+.bg4{
+  background-image: url('./images/4.webp');
+}
+.bg5{
+  background-image: url('./images/5.webp');
+}
+.bg6{
+  background-image: url('./images/6.webp');
+}
+.lol{
+  animation: xd 7s infinite ease;
+}
+.lightningBG{
+  animation: xd2 7s infinite ease;
+}
+.rotate360{
+  animation: spin360 5s linear infinite;
+}
+
+/* 33 , 45 , 50 */
+.maskClass{
+  background-size: cover;
+  /* background-image: url('./images/noColorBG.png'); */
+  /* background-image: url('https://images.unsplash.com/photo-1673082797735-f994d6120ded?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80'); */
+  mask-image: url('./images//mask3.png');
+  -webkit-mask-image: url('./images//mask3.png');
+  -webkit-mask-size: cover;
+  -webkit-mask-position: 0% 0%;
+  animation: fillMask 1s   forwards steps(44);
+  animation-delay: 300ms;
+}
+
+
+
+
+
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #555555;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(77, 75, 75);
+}
+.scrollOpacityFull::-webkit-scrollbar-track{
+  background-color: rgb(146, 146, 146);
+}
+
+@keyframes xd {
+  0%{
+    color: #37474F;
+    text-shadow: none;
+  }
+  45%{
+    color: #37474F;
+    text-shadow: none;
+  }
+  46%{
+    color: gold;
+    text-shadow: 5px 5px gold;
+
+  }
+  48%{
+    color: #37474F;
+    text-shadow: none;
+  }
+  50%{
+    color: gold;
+    text-shadow: -5px -5px gold;
+  }
+  52%{
+    color: #37474F;
+    text-shadow: none;
+  }
+  100%{
+    color: #37474F;
+    text-shadow: none;
+  }
+}
+
+@keyframes xd2 {
+  0%{
+    fill: #E4393C;
+    stroke: transparent;
+    
+  }
+  45%{
+    fill: #E4393C;
+    stroke: transparent;
+  }
+  46%{
+    fill: black;
+    stroke: gold;
+    
+  }
+  48%{
+    fill: #E4393C;
+    stroke: transparent;
+  }
+  50%{
+    fill: black;
+    stroke: gold;
+  }
+  52%{
+    fill: #E4393C;
+    stroke: transparent;
+  }
+  100%{
+    fill: #E4393C;
+    stroke: transparent;
+  }
+}
+
+@keyframes fillMask{
+  0%{
+    -webkit-mask-position: 0% 0%;
+    mask-position: 0% 0%;
+  }
+
+ 
+  100%{
+    -webkit-mask-position:  100% 0%;
+    mask-position: 100% 0%;
+    z-index: -1;
+  }
+}
